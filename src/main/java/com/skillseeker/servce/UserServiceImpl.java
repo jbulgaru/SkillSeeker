@@ -1,9 +1,9 @@
-package com.skillseeker.servce.interfaces;
+package com.skillseeker.servce;
 
 import com.skillseeker.model.User;
 import com.skillseeker.repository.UserRepository;
+import com.skillseeker.servce.interfaces.IUserService;
 import lombok.AllArgsConstructor;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -13,7 +13,7 @@ import java.util.Optional;
 @AllArgsConstructor
 @Service
 @Transactional
-public class UserServiceImpl implements IUserService{
+public class UserServiceImpl implements IUserService {
 
     private final UserRepository userRepository;
 
