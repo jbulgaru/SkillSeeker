@@ -21,3 +21,4 @@ buildNumber.properties
 /.idea/
 /HELP.md
 /src/main/resources/application.properties
+/nbactions.xml
