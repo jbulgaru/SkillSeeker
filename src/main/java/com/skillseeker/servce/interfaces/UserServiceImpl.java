@@ -3,7 +3,6 @@ package com.skillseeker.servce.interfaces;
 import com.skillseeker.model.User;
 import com.skillseeker.repository.UserRepository;
 import lombok.AllArgsConstructor;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
