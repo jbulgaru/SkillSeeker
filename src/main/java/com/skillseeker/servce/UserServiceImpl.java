@@ -3,16 +3,15 @@ package com.skillseeker.servce;
 import com.skillseeker.model.User;
 import com.skillseeker.repository.UserRepository;
 import com.skillseeker.servce.interfaces.IUserService;
-import lombok.AllArgsConstructor;
+import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 import java.util.Optional;
 
-@AllArgsConstructor
+@RequiredArgsConstructor
 @Service
-@Transactional
 public class UserServiceImpl implements IUserService {
 
     private final UserRepository userRepository;
@@ -25,7 +24,7 @@ public class UserServiceImpl implements IUserService {
 
     @Override
     public List<User> findAllUsers() {
-        return userRepository.findAllUsers();
+        return userRepository.findAll();
     }
 
     @Override
