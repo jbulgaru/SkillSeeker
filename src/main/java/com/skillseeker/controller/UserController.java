@@ -1,7 +1,7 @@
 package com.skillseeker.controller;
 
 import com.skillseeker.model.User;
-import com.skillseeker.model.UserRecord;
+import com.skillseeker.dto.UserRecord;
 import com.skillseeker.servce.interfaces.IUserService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
