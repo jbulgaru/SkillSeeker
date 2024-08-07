@@ -16,9 +16,7 @@ buildNumber.properties
 # JDT-specific (Eclipse Java Development Tools)
 .classpath
 
-/compose.yaml
 
 /.idea/
 /HELP.md
-/src/main/resources/application.properties
 /nbactions.xml
