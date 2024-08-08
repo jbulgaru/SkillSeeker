@@ -1,8 +1,8 @@
-package com.skillseeker.servce;
+package com.skillseeker.service;
 
 import com.skillseeker.model.User;
 import com.skillseeker.repository.UserRepository;
-import com.skillseeker.servce.interfaces.IUserService;
+import com.skillseeker.service.interfaces.IUserService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -10,6 +10,7 @@ import org.springframework.transaction.annotation.Transactional;
 import java.util.List;
 import java.util.Optional;
 
+@Transactional
 @RequiredArgsConstructor
 @Service
 public class UserServiceImpl implements IUserService {

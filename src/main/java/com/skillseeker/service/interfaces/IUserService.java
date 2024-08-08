@@ -1,4 +1,4 @@
-package com.skillseeker.servce.interfaces;
+package com.skillseeker.service.interfaces;
 
 import com.skillseeker.model.User;
 
