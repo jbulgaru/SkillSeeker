@@ -32,8 +32,8 @@ public class Payment {
     @JoinColumn(name = "booking_id", nullable = false)
     private Booking booking;
 
-    @Column(nullable = false, precision = 10, scale = 2)
-    private Double amount;
+    @Column(name = "amount", nullable = false)
+    private Long amount;
 
     @Column(name = "payment_date", nullable = false)
     private LocalDateTime paymentDate;
