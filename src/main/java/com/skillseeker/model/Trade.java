@@ -39,7 +39,7 @@ public class Trade {
     @Column(name = "service_description", columnDefinition = "TEXT")
     private String serviceDescription;
 
-    @Column(nullable = false, precision = 10, scale = 2)
+    @Column(name = "price", nullable = false)
     private Double price;
 
     @Column(name = "created_at", nullable = false, updatable = false)
