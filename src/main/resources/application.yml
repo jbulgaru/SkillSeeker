@@ -1,0 +1,13 @@
+spring:
+  config:
+    import: optional:file:./docker/.env[.properties]
+  datasource:
+    driverClassName: org.postgresql.Driver
+    url: jdbc:postgresql://localhost:5432/${PG_DB}
+    username: ${PG_PASSWORD}
+    password: ${PG_USER}
+  flyway:
+    enabled: true
+    baselineOnMigrate: true
+    validateOnMigrate: true
+    locations: classpath:db/migration/postgres

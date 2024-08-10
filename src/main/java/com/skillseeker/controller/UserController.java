@@ -2,7 +2,7 @@ package com.skillseeker.controller;
 
 import com.skillseeker.model.User;
 import com.skillseeker.dto.UserRecord;
-import com.skillseeker.servce.interfaces.IUserService;
+import com.skillseeker.service.interfaces.IUserService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -49,7 +49,7 @@ public class UserController {
                 .orElseGet(() -> ResponseEntity.status(HttpStatus.NOT_FOUND).build());
     }
 
-    @GetMapping("/")
+    @GetMapping()
     public ResponseEntity<List<User>> getAllUsers() {
         List<User> users = userService.findAllUsers();
         return new ResponseEntity<>(users, HttpStatus.OK);
