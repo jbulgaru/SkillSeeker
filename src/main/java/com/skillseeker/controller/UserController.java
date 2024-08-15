@@ -49,7 +49,7 @@ public class UserController {
                 .orElseGet(() -> ResponseEntity.status(HttpStatus.NOT_FOUND).build());
     }
 
-    @GetMapping("/")
+    @GetMapping()
     public ResponseEntity<List<User>> getAllUsers() {
         List<User> users = userService.findAllUsers();
         return new ResponseEntity<>(users, HttpStatus.OK);
