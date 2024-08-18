@@ -33,13 +33,6 @@ public class AuditLogServiceImpl implements IAuditLogService {
     }
 
     @Override
-    public List<AuditLog> findAuditLogsByUserId(Long userId) {
-        return auditLogRepository.findAll().stream()
-                .filter(auditLog -> auditLog.getUser().getId().equals(userId))
-                .toList();
-    }
-
-    @Override
     public void deleteAuditLogById(Long id) {
         auditLogRepository.deleteById(id);
     }
