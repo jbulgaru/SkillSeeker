@@ -9,6 +9,5 @@ public interface IAuditLogService {
     AuditLog saveAuditLog(AuditLog auditLog);
     Optional<AuditLog> findAuditLogById(Long id);
     List<AuditLog> findAllAuditLogs();
-    List<AuditLog> findAuditLogsByUserId(Long userId);
     void deleteAuditLogById(Long id);
 }
