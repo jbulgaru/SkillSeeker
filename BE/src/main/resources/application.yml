@@ -1,11 +1,11 @@
 spring:
   config:
-    import: optional:file:./docker/.env[.properties]
+    import: optional:file:../docker/.env[.properties]
   datasource:
     driverClassName: org.postgresql.Driver
     url: jdbc:postgresql://localhost:5432/${PG_DB}?currentSchema=${PG_SKILLSEEKER_SCHEMA}
-    username: ${PG_PASSWORD}
-    password: ${PG_USER}
+    username: ${PG_USER}
+    password: ${PG_PASSWORD}
   flyway:
     enabled: true
     baselineOnMigrate: true

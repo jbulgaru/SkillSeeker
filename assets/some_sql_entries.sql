@@ -13,10 +13,6 @@ SELECT * FROM skillseeker.verifications;
 SELECT * FROM skillseeker.audit_logs;
 
 
-
-
-
-
 INSERT INTO skillseeker.users (username, password, email, first_name, last_name, phone_number)
 VALUES ('john_doe', 'password123', 'john.doe@example.com', 'John', 'Doe', '555-1234');
 
