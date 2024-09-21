@@ -3,7 +3,7 @@ spring:
     import: optional:file:./docker/.env[.properties]
   datasource:
     driverClassName: org.postgresql.Driver
-    url: jdbc:postgresql://localhost:5432/${PG_DB}
+    url: jdbc:postgresql://localhost:5432/${PG_DB}?currentSchema=${PG_SKILLSEEKER_SCHEMA}
     username: ${PG_PASSWORD}
     password: ${PG_USER}
   flyway:

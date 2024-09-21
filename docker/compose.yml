@@ -1,5 +1,29 @@
 services:
-  postgres:
+  keycloak_web:
+    image: quay.io/keycloak/keycloak:23.0.7
+    container_name: keycloak_web
+    environment:
+      KC_DB: postgres
+      KC_DB_URL: jdbc:postgresql://postgresdb:5432/${PG_DB}?currentSchema=${PG_KEYCLOAK_SCHEMA}
+      KC_DB_USERNAME: ${PG_USER_KEYCLOAK}
+      KC_DB_PASSWORD: ${PG_PASSWORD_KEYCLOAK}
+
+      KC_HOSTNAME: localhost
+      KC_HOSTNAME_PORT: 8079
+      KC_HOSTNAME_STRICT: false
+      KC_HOSTNAME_STRICT_HTTPS: false
+
+      KC_LOG_LEVEL: info
+      KC_METRICS_ENABLED: true
+      KC_HEALTH_ENABLED: true
+      KEYCLOAK_ADMIN: ${KEYCLOAK_ADMIN}
+      KEYCLOAK_ADMIN_PASSWORD: ${KEYCLOAK_ADMIN_PASSWORD}
+    command: start-dev
+    depends_on:
+      - postgresdb
+    ports:
+      - 8079:8080
+  postgresdb:
     image: postgres:latest
     ports:
       - 5432:5432
