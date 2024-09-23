@@ -22,3 +22,6 @@ buildNumber.properties
 /nbactions.xml
 docker/.env
 /docker/.env
+/BE/target/
+/FE/node_modules/
+/FE/.svelte-kit/
