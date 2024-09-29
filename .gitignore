@@ -23,5 +23,18 @@ buildNumber.properties
 docker/.env
 /docker/.env
 /BE/target/
-/FE/node_modules/
-/FE/.svelte-kit/
+# dependencies
+fe/node_modules
+fe/.pnp
+fe/.pnp.js
+fe/.yarn/install-state.gz
+
+# testing
+fe/coverage
+
+# next.js
+fe/.next/
+fe/out/
+
+# production
+fe/build
