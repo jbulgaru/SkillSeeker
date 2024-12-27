@@ -1,16 +1,18 @@
 services:
-  keycloak_web:
+############################
+  keycloak:
     image: quay.io/keycloak/keycloak:23.0.7
-    container_name: keycloak_web
+    container_name: keycloak
     environment:
       KC_DB: postgres
-      KC_DB_URL: jdbc:postgresql://postgresdb:5432/${PG_DB}?currentSchema=${PG_KEYCLOAK_SCHEMA}
-      KC_DB_USERNAME: ${PG_USER_KEYCLOAK}
-      KC_DB_PASSWORD: ${PG_PASSWORD_KEYCLOAK}
+      KC_DB_URL: jdbc:postgresql://postgres_keycloak_db:${PG_KC_PORT}/${PG_KC_DB}
+      KC_DB_USERNAME: ${PG_KC_USER}
+      KC_DB_PASSWORD: ${PG_KC_PASSWORD}
 
       KC_HOSTNAME: localhost
       KC_HOSTNAME_PORT: 8079
-      KC_HOSTNAME_STRICT: false
+      KC_HOSTNAME_STRICT_BACKCHANNEL: false
+      KC_HTTP_ENABLED: true
       KC_HOSTNAME_STRICT_HTTPS: false
 
       KC_LOG_LEVEL: info
@@ -18,18 +20,44 @@ services:
       KC_HEALTH_ENABLED: true
       KEYCLOAK_ADMIN: ${KEYCLOAK_ADMIN}
       KEYCLOAK_ADMIN_PASSWORD: ${KEYCLOAK_ADMIN_PASSWORD}
-    command: start-dev
+    command: start
+    restart: always
     depends_on:
-      - postgresdb
+      - postgres_keycloak_db
+    networks:
+      - keycloak_network
     ports:
       - 8079:8080
-  postgresdb:
+############################
+  postgres_keycloak_db:
     image: postgres:latest
     ports:
-      - 5432:5432
+      - ${PG_KC_PORT}:5432
+    environment:
+      - POSTGRES_PASSWORD=${PG_KC_PASSWORD}
+      - POSTGRES_USER=${PG_KC_USER}
+      - POSTGRES_DB=${PG_KC_DB}
+    networks:
+      - keycloak_network
+    volumes:
+      - /var/lib/postgresql/data_kc
+
+
+############################
+  postgres_be_db:  #database for Spring Boot backend app
+    image: postgres:latest
+    ports:
+      - ${PG_PORT}:5432
     environment:
       - POSTGRES_PASSWORD=${PG_PASSWORD}
       - POSTGRES_USER=${PG_USER}
       - POSTGRES_DB=${PG_DB}
+    networks:
+      - keycloak_network
     volumes:
-      - /var/lib/postgresql/data:/var/lib/postgresql/data
+       - /var/lib/postgresql/data_be
+
+
+networks:
+  keycloak_network:
+    driver: bridge
